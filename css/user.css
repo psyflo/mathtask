@@ -1,0 +1,52 @@
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    /* width: 800px /*whatever width you want*/
+    text-align: center;
+    min-height: 200px;
+}
+
+.custom-question {
+	margin: 0 auto;
+	margin-top: 58px;
+	width: 350px;
+}
+.enter-button {
+	margin-left: 15px;
+}
+
+body {
+   font-family: "Times New Roman", Times, serif;
+   font-size: 22px; 
+   background-color: black;
+   color: white;
+}
+
+.equation {
+  font-size: 45px;
+  font-family: monospace;
+  line-height: 1.6em;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+.container {
+  display: flex;
+}
+.container > p {
+  flex: 1; /*grow*/
+}
