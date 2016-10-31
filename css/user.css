@@ -3,6 +3,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
+    background-color: black;
 }
 
 .middle {
@@ -19,12 +20,12 @@
 }
 
 .custom-question {
-	margin: 0 auto;
-	margin-top: 58px;
-	width: 350px;
+  margin: 0 auto;
+  margin-top: 58px;
+  width: 350px;
 }
 .enter-button {
-	margin-left: 15px;
+  margin-left: 15px;
 }
 
 body {
