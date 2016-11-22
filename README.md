@@ -2,7 +2,7 @@
 
 Developed using the jsPsych (www.jsypsych.org) library.
 
-Download the folder and open task.html with a modern webbrowser. For a preview visit: http://tagging.psycho.studie.li/projekte/ML5/task.html
+Download the folder and open task.html with a modern webbrowser. NNo Internet connection or server is required since the program runs locally. For a preview visit: http://tagging.psycho.studie.li/projekte/ML5/task.html
 
 Press SPACE once more a the end of block 2 to download the recorded data!
 
