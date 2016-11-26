@@ -123,7 +123,7 @@
             choices: [32],
             timing_response: solution_timeout, // wait 5 seconds until you show the solution
             stimulus: '<div class="equation">' + equa.equation + '</div><div style="color: darkred;">Press the SPACEBAR to respond.</div><br/>',
-            data: { correct_solution: equa.solution },
+            data: { correct_solution: equa.solution, equa_id: length-i },
             on_trial_start: function () {
               console.log(equa.solution);
               /*
@@ -145,7 +145,7 @@
             choices: [32],
             timing_response: 10000, // wait 15 seconds until you show input field
             stimulus: '<div class="equation">' + equa.equation + '</div><div style="color: darkred;">Press the SPACEBAR to respond.</div><br/><div id="res" style="color: darkred;">' + equa.solution + '</div>',
-            data: { correct_solution: equa.solution },
+            data: { correct_solution: equa.solution, equa_id: length-i },
             on_trial_start: function () {
             },
             on_finish: function(trial_data) {
@@ -172,7 +172,7 @@
               preamble: '<div class="equation">' + equa.equation + '</div>',
               questions:  ['Your Response:'],
               columns: [3],
-              data: { correct_solution: equa.solution },
+              data: { correct_solution: equa.solution, equa_id: length-i },
               on_finish: function(trial_data) {
                 var correct = (JSON.parse(trial_data.responses)["Q0"] == trial_data.correct_solution);
                 jsPsych.data.addDataToLastTrial({correct: correct});
@@ -232,8 +232,8 @@
       return stimuli_block;
     }
 
-    var block1 = createBlock(10, 10000);
-    var block2 = createBlock(10, 1000);
+    var block1 = createBlock(2, 10000);
+    var block2 = createBlock(2, 1000);
 
     console.log(block1);
     
