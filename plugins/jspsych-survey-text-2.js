@@ -95,10 +95,10 @@ jsPsych.plugins['survey-input-validate'] = (function() {
         "responses": JSON.stringify(question_data)
       };
 
-      display_element.html('');
 
       // next trial if response is valid
-      if(true) {
+      if(end) {
+        display_element.html('');
         jsPsych.finishTrial(trialdata);
       }
     });
