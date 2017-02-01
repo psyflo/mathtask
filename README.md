@@ -4,8 +4,9 @@ Developed using the jsPsych (www.jsypsych.org) library.
 
 Download the folder and open task.html with a modern webbrowser. No Internet connection or server is required since the program runs locally. For a preview visit: http://tagging.psycho.studie.li/projekte/ML5/task.html
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND! 
-I can not guarantee that the data collected with this software is the same as the original Math Task.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND!
+
+I can not guarantee that the data collected with this software is the same as with the original Math Task.
 
 Press SPACE once more a the end of block 2 to download the recorded data!
 
