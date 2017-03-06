@@ -2,7 +2,9 @@
 
 Developed using the jsPsych (www.jsypsych.org) library.
 
-Download the ZIP and open task.html with a modern web browser (I use Firefox). **No internet connection or server is required since the program runs locally.** For a preview visit: http://tagging.psycho.studie.li/projekte/ML5/task.html
+[Download the ZIP](https://github.com/psyflo/mathtask/archive/master.zip) and open task.html with a modern web browser (I use Firefox). **No internet connection or server is required since the program runs locally.** 
+
+For a preview visit: http://tagging.psycho.studie.li/projekte/ML5/task.html
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND!
 
