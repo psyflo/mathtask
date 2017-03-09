@@ -1,6 +1,6 @@
 # mathtask
 
-Developed using the jsPsych (www.jsypsych.org) library.
+Developed using the [jsPsych](www.jsypsych.org) library.
 
 
 ## Run the application
