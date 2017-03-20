@@ -6,7 +6,12 @@
 convert <- function(df, name) {
 
 df[df$correct == "",]$correct <- NA
-df[df$has_cheated == "",]$has_cheated <- NA
+# check if participant cheated at least once (otherwise this variable is not available)
+if (is.logical(df$has_cheated)) {
+	df[df$has_cheated == "",]$has_cheated <- NA
+} else {
+	df$has_cheated <- NA
+}
 df$has_cheated
 
 # split blocks
