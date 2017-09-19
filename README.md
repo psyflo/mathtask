@@ -12,6 +12,8 @@ For a preview visit: http://tagging.psycho.studie.li/projekte/ML5/task.html
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND!
 I can not guarantee that the data collected with this software is the same as with the original Math Task.
 
+### Localization
+Currently, English (default) and Hungarian (hu) are supported langauges. To change the default language, add the `?lang=X` parameter to the URL in the browser and replace X with the language code. For instance for Hungarian, the URL is `task.html?lang=hu`. 
 
 ## Save data
 Press SPACE once more a the end of block 2 to download the recorded data as a CSV file. Save the file on your computer and **add participant ID** to the filename. 
