@@ -62,7 +62,12 @@ jsPsych.plugins['survey-input-validate'] = (function() {
       'id': 'jspsych-survey-text-next',
       'class': 'jspsych-btn jspsych-survey-text enter-button'
     }));
-    $("#jspsych-survey-text-next").html('Enter');
+    if (typeof jspsych_survey_text_2_button !== "undefined") {
+          $("#jspsych-survey-text-next").html(jspsych_survey_text_2_button);
+        } else {
+           $("#jspsych-survey-text-next").html('Enter');
+        }
+
 
     $('input').keyup(function(e){
           if(e.keyCode == 13)

@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
   <head>
-    <title>Task</title>
+    <title>Task</title>    
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.i18n.properties.min.js"></script>
     <script src="jspsych.js"></script>
     <script src="plugins/jspsych-text.js"></script>
     <script src="plugins/jspsych-single-stim.js"></script>
@@ -19,19 +20,46 @@
   </body>
   <script>
 
+    /* Helper function to get language setting*/
+    function getQueryVariable(variable){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+      }
+
+      // get language
+      user_set_language = getQueryVariable("lang");
+
+    /* Localization */
+    // This will initialize the plugin 
+      jQuery.i18n.properties({
+          name:'Text', 
+          path:'bundle/',
+          mode:'both',
+          language: user_set_language,
+          async: false,
+          callback: function() {
+            console.log(txt_usr_lang)
+          }
+      });
+
     /* define welcome message block */
     var welcome_block = {
       type: "text",
-      text: "Please start the tool. <p>Please press the SPACE BAR to continue</p>"
+      text: txt_welcome_block + "<p>" + txt_space_bar_contine + "</p>"
     };
     var instructions_block = {
       type: "text",
-      text: "The following task is a classic cognitive experiment that looks at mathematical skills. You will be presented with an equation that we would like you to solve. It consists of 10 numbers between 1 and 20 that are to be added or subtracted. The equation will appear on screen, and then you MUST hit the SPACEBAR for the response box to appear. Please calculate the correct response as fast as you can, and enter it into the response box. Hit enter when you are done. You will be given the opportunity to respond again until your answer is correct. Shortly after that, the next equation will appear. Altogether there are 20 such equations, presented in two blocks of ten equations each. <p>Please press the SPACE BAR to continue.</p>",
+      text: txt_instructions_block_1 + "<p>" + txt_space_bar_contine + "</p>",
       timing_post_trial: 2000
     };
     var instructions_block_2 = {
       type: "text",
-      text: "If you have any questions before you begin, or if any problems arise throughout the research, alert the experimenter. <p>Please press the SPACE BAR to continue.</p>",
+      text: txt_instructions_block_2 + "<p>" + txt_space_bar_contine + "</p>",
       timing_post_trial: 2000
     };
 
@@ -106,9 +134,9 @@
         for (var i = length - 1; i >= 0; i--) {
           var equa = generate_equation();
 
-          var instructions_text = "<div class='mono'>Here's the next one:</div>";
+          var instructions_text = "<div class='mono'>"+ txt_next +"</div>";
           if (i === length - 1) { // first equation
-            instructions_text = "<div class='mono'>Here's the first one:</div>";
+            instructions_text = "<div class='mono'>"+ txt_first +"</div>";
           }
 
           var instructions_trial = {
@@ -122,7 +150,7 @@
           var equation_stim = {
             choices: [32],
             timing_response: solution_timeout, // wait 5 seconds until you show the solution
-            stimulus: '<div class="equation">' + equa.equation + '</div><div style="color: darkred;">Press the SPACEBAR to respond.</div><br/>',
+            stimulus: '<div class="equation">' + equa.equation + '</div><div style="color: darkred;">' + txt_space_bar_respond + '</div><br/>',
             data: { correct_solution: equa.solution, equa_id: length-i },
             on_trial_start: function () {
               console.log(equa.solution);
@@ -144,7 +172,7 @@
           var equation_cheat = {
             choices: [32],
             timing_response: 10000, // wait 15 seconds until you show input field
-            stimulus: '<div class="equation">' + equa.equation + '</div><div style="color: darkred;">Press the SPACEBAR to respond.</div><br/><div id="res" style="color: darkred;">' + equa.solution + '</div>',
+            stimulus: '<div class="equation">' + equa.equation + '</div><div style="color: darkred;">' + txt_space_bar_respond + '</div><br/><div id="res" style="color: darkred;">' + equa.solution + '</div>',
             data: { correct_solution: equa.solution, equa_id: length-i },
             on_trial_start: function () {
             },
@@ -170,7 +198,7 @@
           var equation_stim_with_input = {
               type: "survey-input-validate",
               preamble: '<div class="equation">' + equa.equation + '</div>',
-              questions:  ['Your Response:'],
+              questions:  [equation_stim_with_input_response], // 'Your response:'
               columns: [3],
               data: { correct_solution: equa.solution, equa_id: length-i },
               on_finish: function(trial_data) {
@@ -184,9 +212,9 @@
             stimulus: function() {
               var data = jsPsych.data.getLastTrialData();
               if(data.correct) {
-                return '<div class="mono">That is correct!</div>';
+                return '<div class="mono">'+ txt_correct +'</div>';
               } else {
-                return '<div class="mono">Sorry, that was incorrect. <br/>Please try again</div>';
+                return '<div class="mono">'+ txt_incorrect +'</div>';
               }
             },
             timing_response: 2000,
@@ -258,7 +286,7 @@
 
     var end_block_1_1 = {
               type: "single-stim",
-              stimulus: "That is the end of block 1.",
+              stimulus: txt_end_block_1, //"That is the end of block 1.",
               is_html: true,
               timing_response: 2000,
               timing_post_trial: 0,
@@ -266,7 +294,7 @@
     };
     var end_block_1_2 = {
               type: "single-stim",
-              stimulus: "That is the end of block 1. <br/> Now here is block 2.",
+              stimulus: txt_end_block_1_2, //"That is the end of block 1. <br/> Now here is block 2.",
               is_html: true,
               timing_response: 2000,
               timing_post_trial: 0,
@@ -274,7 +302,7 @@
     };
     var end = {
       type: "text",
-      text: "This is the end of the task. Please alert the experimenter.",
+      text: txt_end, //"This is the end of the task. Please alert the experimenter.",
       timing_post_trial: 2000
     };
 
